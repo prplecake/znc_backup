@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# setup.py
+# version: 0.1.0
+# This script asks the user a few questions and saves the answers in
+# JSON format.
+
 import os
 import json
 
