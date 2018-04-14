@@ -4,6 +4,7 @@
 
 import os
 import json
+import logging
 import smtplib
 import mimetypes
 import subprocess
@@ -37,16 +38,43 @@ It's that time of week again. Here's your weekly backup of your znc data on `Che
             subtype="x-7z-compressed", filename=os.path.basename(backupFile))
 
     with smtplib.SMTP(host, port) as s:
-        s.set_debuglevel(1)
         s.starttls()
         s.login(username, password)
         s.send_message(msg)
 
+    logger.debug('Mail sent.')
+
 
 def main():
+
+    logfile = 'log/znc_backup.log'
+
+    if not os.path.exists(logfile):
+        if not os.path.isdir('log/'):
+            subprocess.call(['mkdir', '-p', 'log'])
+
+    global logger
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+
+    fh = logging.FileHandler(logfile)
+    fh.setLevel(logging.INFO)
+
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('[%(asctime)s] - %(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    fh.setFormatter(formatter)
+
+    logger.addHandler(ch)
+    logger.addHandler(fh)
+
+    logger.debug('Logger initialized.')
+
     global config
     if not os.path.exists('config.json'):
-        print("Configuration file doesn't exist.")
+        logger.warning('Configuration file doesn\'t exist.')
         config = createConfig()
 
     with open('config.json', 'r') as f:
@@ -56,18 +84,19 @@ def main():
     tempPath = os.getenv("HOME") + "/znc-backup-staging"
     timestamp = datetime.now().strftime("%d-%h-%y - %H-%M-%S")
 
+    logger.debug('Checking if backup source location exists.')
+
     if not os.path.isdir(tempPath):
-        print("Backup dir doesn't exist. Creating...")
+        logger.warning('Backup dir doesn\'t exist. Creating...')
         try:
             subprocess.call(['mkdir', '-p', tempPath])
-            print("Backup dir created.")
+            logger.debug('Backup dir created.')
             createdBackupDir = True
         except:
-            print("Something went wrong creating backup dir.")
+            logger.error('Something went wrong creating backup dir.')
             exit()
     else:
-        print("Backup dir exists.")
-        print("Skipping.")
+        logger.debug('Backup dir exists - skipping')
         createdBackupDir = False
 
     filename = "znc - " + timestamp
@@ -75,8 +104,8 @@ def main():
     print(outFile)
 
     if not os.path.isdir(path):
-        print('Uh oh... check to make sure the path is right.')
-        print('`path`: {}'.format(path))
+        logger.error('Uh oh... check to make sure the path is right.')
+        logger.error('`path`: {}'.format(path))
     else:
         cmd = []
         cmd.append("7z")
@@ -86,13 +115,10 @@ def main():
         try:
             subprocess.call(cmd)
         except:
-            print("Something went wrong attempting to send email.")
+            logger.error('Something went wrong attemping to send email.')
             exit()
 
         sendEmail(outFile)
 
 if __name__ == '__main__':
-    try:
-        main()
-    except Exception as e:
-        print('Something went terribly wrong:\n\t{}'.format(e))
+    main()
