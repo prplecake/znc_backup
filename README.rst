@@ -4,6 +4,13 @@ znc-backup
 ``znc-backup`` is a script that creates a 7-zip archive of the ``$HOME/.znc``
 directory and emails it to an email you provide during setup.
 
+ZNC is an advanced IRC bouncer. <https://wiki.znc.in/ZNC>_.
+
+Requirements
+------------
+
+This package requires python 3. 
+
 Installation
 ------------
 
