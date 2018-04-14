@@ -75,7 +75,7 @@ def main():
 
     if not os.path.isdir(path):
         print('Uh oh... check to make sure the path is right.')
-        print(f'`path`: {path}')
+        print('`path`: {}'.format(path))
     else:
         cmd = []
         cmd.append("7z")
@@ -94,4 +94,4 @@ if __name__ == '__main__':
     try:
         main()
     except Exception as e:
-        print(f'Something went terribly wrong:\n\t{e}')
+        print('Something went terribly wrong:\n\t{}'.format(e))
