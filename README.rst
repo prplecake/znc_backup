@@ -2,7 +2,7 @@ znc-backup
 ==========
 
 ``znc-backup`` is a script that creates a 7-zip archive of the ``$HOME/.znc``
-directory and emails it to an email you provide during setup.
+directory and emails it to an email you provide during setup. See `Installation`_.
 
 ZNC is an advanced IRC bouncer. https://wiki.znc.in/ZNC.
 
