@@ -12,9 +12,6 @@ from datetime import datetime
 
 from email.message import EmailMessage
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
-
 def sendEmail(backupFile):
 
     host = config['smtp']['host']
@@ -42,11 +39,17 @@ It's that time of week again. Here's your weekly backup of your znc data on `Che
     with smtplib.SMTP(host, port) as s:
         s.starttls()
         s.login(username, password)
-
         s.send_message(msg)
 
 
 def main():
+    global config
+    if not os.path.exists('config.json'):
+        print("Configuration file doesn't exist.")
+        config = createConfig()
+
+    with open('config.json', 'r') as f:
+        config = json.load(f)
 
     path = os.getenv("HOME") + "/.znc"
     tempPath = os.getenv("HOME") + "/znc-backup-staging"
