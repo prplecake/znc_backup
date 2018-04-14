@@ -18,9 +18,9 @@ cd znc-backup/
 Run the setup script, this will ask for things like your SMTP server host, port
 (tls), username and password - pretty standard stuff:
 
-```
-python3 setup.py
-```
+.. code-block::
+
+    python3 setup.py
 
 You'll now find a ``config.json`` file in at the project root. Keep this secure,
 since it contains a password in plain text.
