@@ -23,11 +23,11 @@ Clone the repo:
     cd znc-backup/
 
 Run the setup script, this will ask for things like your SMTP server host, port
-(tls), username and password - pretty standard stuff:
+(TLS), username and password - pretty standard stuff:
 
 .. code-block::
 
-    python3 setup.py
+    ./setup.py
 
 You'll now find a ``config.json`` file in at the project root. Keep this secure,
 since it contains a password in plain text.
@@ -52,3 +52,8 @@ up crontab to do all the remembering for you. My crontab looks like this:
     0 4 * * 4   cd /home/matthewjorgensen/znc-backup; ./znc_backup.py >/dev/null 2>&1
 
 The first line check to see if znc is running every ten minutes. The second line will run the script on Thursday at 0400.
+
+License
+-------
+
+This project is licensed under the terms of the MIT license.
