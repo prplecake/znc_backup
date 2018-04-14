@@ -28,9 +28,9 @@ since it contains a password in plain text.
 It's a good idea to test the script to be sure everything runs properly. After
 running the setup script, go ahead and give the main script a go:
 
-```
-python3 znc_backup.py
-```
+.. code::
+
+    python3 znc_backup.py
 
 If everything goes well, you should have an archive waiting in your inbox! If
 things did not go well, feel free to open an issue with any relevant information
