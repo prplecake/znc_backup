@@ -1,5 +1,5 @@
 To Do
 =====
 
-[] implement logging
-[] write docs for creating a cron job
+[x] implement logging
+[x] write docs for creating a cron job
