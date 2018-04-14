@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # znc-backup
+# version: 0.1.0
 # This script compresses your znc data dir and emails it to you once a week.
 
 import os
