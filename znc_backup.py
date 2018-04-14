@@ -37,6 +37,7 @@ It's that time of week again. Here's your weekly backup of your znc data on `Che
             subtype="x-7z-compressed", filename=os.path.basename(backupFile))
 
     with smtplib.SMTP(host, port) as s:
+        s.set_debuglevel(1)
         s.starttls()
         s.login(username, password)
         s.send_message(msg)
