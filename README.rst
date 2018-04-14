@@ -9,11 +9,11 @@ Installation
 
 Clone the repo:
 
-```
-cd ~/
-git clone https://github.com/mattjorgs/znc-backup.git
-cd znc-backup/
-```
+.. code-block::
+
+    cd ~/
+    git clone https://github.com/mattjorgs/znc-backup.git
+    cd znc-backup/
 
 Run the setup script, this will ask for things like your SMTP server host, port
 (tls), username and password - pretty standard stuff:
@@ -28,7 +28,7 @@ since it contains a password in plain text.
 It's a good idea to test the script to be sure everything runs properly. After
 running the setup script, go ahead and give the main script a go:
 
-.. code::
+.. code-block::
 
     python3 znc_backup.py
 
