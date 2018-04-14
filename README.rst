@@ -2,7 +2,7 @@ znc-backup
 ==========
 
 ``znc-backup`` is a script that creates a 7-zip archive of the ``$HOME/.znc``
-directory and emails it to an email you provide during setup. See `Installation`_.
+directory and emails it to an email you provide during setup.
 
 ZNC is an advanced IRC bouncer. https://wiki.znc.in/ZNC.
 
@@ -37,8 +37,18 @@ running the setup script, go ahead and give the main script a go:
 
 .. code-block::
 
-    python3 znc_backup.py
+    ./znc_backup.py
 
 If everything goes well, you should have an archive waiting in your inbox! If
 things did not go well, feel free to open an issue with any relevant information
 and I'll do my best to help out.
+
+After you've determined the script is working properly, you might want to set
+up crontab to do all the remembering for you. My crontab looks like this:
+
+.. code-block::
+
+    */10 * * * *    /usr/bin/znc >/dev/null 2>&1
+    0 4 * * 4   cd /home/matthewjorgensen/znc-backup; ./znc_backup.py >/dev/null 2>&1
+
+The first line check to see if znc is running every ten minutes. The second line will run the script on Thursday at 0400.
