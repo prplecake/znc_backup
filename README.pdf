@@ -1,0 +1,308 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wiki.znc.in/ZNC)
+>> /Border [ 0 0 0 ] /Rect [ 217.7529 689.0236 316.6629 701.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/Annots [ 5 0 R ] /Contents 14 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+7 0 obj
+<<
+/Outlines 9 0 R /PageLabels 15 0 R /PageMode /UseNone /Pages 13 0 R /Type /Catalog
+>>
+endobj
+8 0 obj
+<<
+/Author () /CreationDate (D:20180416155554+06'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20180416155554+06'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (znc-backup) /Trapped /False
+>>
+endobj
+9 0 obj
+<<
+/Count 3 /First 10 0 R /Last 12 0 R /Type /Outlines
+>>
+endobj
+10 0 obj
+<<
+/Dest [ 6 0 R /XYZ 62.69291 677.0236 0 ] /Next 11 0 R /Parent 9 0 R /Title (Requirements)
+>>
+endobj
+11 0 obj
+<<
+/Dest [ 6 0 R /XYZ 62.69291 626.0236 0 ] /Next 12 0 R /Parent 9 0 R /Prev 10 0 R /Title (Installation)
+>>
+endobj
+12 0 obj
+<<
+/Dest [ 6 0 R /XYZ 62.69291 218.2236 0 ] /Parent 9 0 R /Prev 11 0 R /Title (License)
+>>
+endobj
+13 0 obj
+<<
+/Count 1 /Kids [ 6 0 R ] /Type /Pages
+>>
+endobj
+14 0 obj
+<<
+/Length 4215
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 179.9349 0 Td (znc-backup) Tj T* -179.9349 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 707.0236 cm
+q
+BT 1 0 0 1 0 14 Tm -0.013902 Tw 12 TL /F3 10 Tf 0 0 0 rg (znc-backup) Tj /F1 10 Tf 0 0 0 rg ( is a script that creates a 7-zip archive of the ) Tj /F3 10 Tf 0 0 0 rg ($HOME/.znc) Tj /F1 10 Tf 0 0 0 rg ( directory and emails it to an email) Tj T* 0 Tw (you provide during setup.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 689.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (ZNC is an advanced IRC bouncer. ) Tj 0 0 .501961 rg (https://wiki.znc.in/ZNC) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 656.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Requirements) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 638.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This package requires python 3.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 605.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Installation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 587.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Clone the repo:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 529.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 468.6898 48 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F3 10 Tf 12 TL (cd ~/) Tj T* (git clone https://github.com/mattjorgs/znc-backup.git) Tj T* (cd znc-backup/) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 497.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 2.239398 Tw (Run the setup script, this will ask for things like your SMTP server host, port \(TLS\), username and) Tj T* 0 Tw (password - pretty standard stuff:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 464.6236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 468.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (./setup.py) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 432.6236 cm
+q
+BT 1 0 0 1 0 14 Tm .035777 Tw 12 TL /F1 10 Tf 0 0 0 rg (You'll now find a ) Tj /F3 10 Tf 0 0 0 rg (config.json) Tj /F1 10 Tf 0 0 0 rg ( file in at the project root. Keep this secure, since it contains a password in) Tj T* 0 Tw (plain text.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 402.6236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.138935 Tw (It's a good idea to test the script to be sure everything runs properly. After running the setup script, go) Tj T* 0 Tw (ahead and give the main script a go:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 369.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 468.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (./znc_backup.py) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 337.4236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .066488 Tw (If everything goes well, you should have an archive waiting in your inbox! If things did not go well, feel free) Tj T* 0 Tw (to open an issue with any relevant information and I'll do my best to help out.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 307.4236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.697765 Tw (After you've determined the script is working properly, you might want to set up crontab to do all the) Tj T* 0 Tw (remembering for you. My crontab looks like this:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 262.2236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 498 36 re B*
+Q
+q
+BT 1 0 0 1 0 14 Tm 12 TL /F3 10 Tf 0 0 0 rg (*/10 * * * *    /usr/bin/znc ) Tj (>) Tj (/dev/null 2) Tj (>) Tj (&) Tj (1) Tj T* (0 4 * * 4   cd /home/matthewjorgensen/znc-backup; ./znc_backup.py ) Tj (>) Tj (/dev/null 2) Tj (>) Tj (&) Tj (1) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 230.2236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.763488 Tw (The first line check to see if znc is running every ten minutes. The second line will run the script on) Tj T* 0 Tw (Thursday at 0400.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 197.2236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (License) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 179.2236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This project is licensed under the terms of the MIT license.) Tj T* ET
+Q
+Q
+ 
+endstream
+endobj
+15 0 obj
+<<
+/Nums [ 0 16 0 R ]
+>>
+endobj
+16 0 obj
+<<
+/S /D /St 1
+>>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000073 00000 n 
+0000000124 00000 n 
+0000000231 00000 n 
+0000000343 00000 n 
+0000000448 00000 n 
+0000000623 00000 n 
+0000000846 00000 n 
+0000000950 00000 n 
+0000001217 00000 n 
+0000001290 00000 n 
+0000001402 00000 n 
+0000001527 00000 n 
+0000001634 00000 n 
+0000001694 00000 n 
+0000005961 00000 n 
+0000006002 00000 n 
+trailer
+<<
+/ID 
+[<4fcf4fd990e5d4b98c1eaf983ecd7804><4fcf4fd990e5d4b98c1eaf983ecd7804>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 8 0 R
+/Root 7 0 R
+/Size 17
+>>
+startxref
+6036
+%%EOF
