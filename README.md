@@ -40,7 +40,7 @@ up crontab to do all the remembering for you. My crontab looks like this:
     */10 * * * *    /usr/bin/znc >/dev/null 2>&1
     0 4 * * 4   cd /home/matthewjorgensen/znc-backup; ./znc_backup.py >/dev/null 2>&1
 
-The first line check to see if znc is running every ten minutes. The second line will run the script on Thursday at 0400.
+The first line checks to see if znc is running every ten minutes. The second line will run the `znc-backup` script on Thursday at 0400.
 
 ## License
 
