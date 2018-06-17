@@ -15,7 +15,6 @@ Installation
 ------------
 
 Clone the repo::
-
     cd ~/
     git clone https://github.com/mattjorgs/znc-backup.git
     cd znc-backup/
