@@ -7,9 +7,11 @@ ZNC is an advanced IRC bouncer. https://wiki.znc.in/ZNC
 
 This project was inspired by ZNC backup from the ZNC wiki. https://wiki.znc.in/ZNC_Backup
 
-## Requirements
+## Prerequisites
 
-This package requires python 3. 
+The following packages are required:
+
+* Python 3
 
 ## Installation
 
