@@ -5,6 +5,8 @@ directory and emails it to an email you provide during setup.
 
 ZNC is an advanced IRC bouncer. https://wiki.znc.in/ZNC.
 
+This project was inspired by ZNC backup from the ZNC wiki. https://wiki.znc.in/ZNC_Backup.
+
 ## Requirements
 
 This package requires python 3. 
