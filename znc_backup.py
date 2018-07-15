@@ -6,6 +6,7 @@
 import os
 import json
 import logging
+import logging.config
 import smtplib
 import subprocess
 
@@ -13,6 +14,19 @@ from datetime import datetime
 from email.message import EmailMessage
 
 import setup
+import conf.logger_config as lc
+
+
+def startLogger():
+    if not os.path.isdir('log'):
+        subprocess.call(['mkdir','log'])
+
+    logging.config.dictConfig(lc.LOGGER_CONFIG)
+
+    logger = logging.getLogger(__name__)
+    logger.debug('Logger initialized.')
+
+    return logger
 
 
 def sendEmail(backupFile):
@@ -42,42 +56,21 @@ Here's your weekly backup of your znc data on `Chell`.
             subtype="x-7z-compressed", filename=os.path.basename(backupFile)
             )
 
-    with smtplib.SMTP(host, port) as s:
-        s.starttls()
-        s.login(username, password)
-        s.send_message(msg)
-
-    logger.debug('Mail sent.')
+    try:
+        logger.debug('Attempting to send mail...')
+        with smtplib.SMTP(host, port) as s:
+            s.starttls()
+            s.login(username, password)
+            s.send_message(msg)
+        logger.debug('Mail sent.')
+    except Exception as e:
+        logger.critical('Exception: {}'.format(e))
 
 
 def main():
 
-    logfile = 'log/znc_backup.log'
-
-    if not os.path.exists(logfile):
-        if not os.path.isdir('log/'):
-            subprocess.call(['mkdir', '-p', 'log'])
-
     global logger
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-
-    fh = logging.FileHandler(logfile)
-    fh.setLevel(logging.INFO)
-
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-
-    formatter = logging.Formatter('''
-[%(asctime)s] - %(name)s - %(levelname)s - %(message)s
-        ''')
-    ch.setFormatter(formatter)
-    fh.setFormatter(formatter)
-
-    logger.addHandler(ch)
-    logger.addHandler(fh)
-
-    logger.debug('Logger initialized.')
+    logger = startLogger()
 
     global config
     if not os.path.exists('config.json'):
