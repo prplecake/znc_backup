@@ -11,7 +11,7 @@ LOGGER_CONFIG = {
         'console': {
             'class':        'logging.StreamHandler',
             'formatter':    'default',
-            'level':        'DEBUG',
+            'level':        'INFO',
         },
         'file': {
             'class':        'logging.handlers.RotatingFileHandler',
