@@ -56,12 +56,14 @@ Here's your weekly backup of your znc data on `Chell`.
             subtype="x-7z-compressed", filename=os.path.basename(backupFile)
             )
 
-
-    logger.debug('Attempting to send mail...')
-    with smtplib.SMTP_SSL(host, port) as s:
-        s.login(username, password)
-        s.send_message(msg)
-    logger.debug('Mail sent.')
+    try:
+        logger.debug('Attempting to send mail...')
+        with smtplib.SMTP_SSL(host, port) as s:
+            s.login(username, password)
+            s.send_message(msg)
+        logger.debug('Mail sent.')
+    except Exception as e:
+        logger.critical('Unable to send mail. Exception: {}'.format(e))
 
 def main():
 
