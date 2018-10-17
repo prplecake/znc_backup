@@ -23,9 +23,7 @@ This project was inspired by ZNC backup from the ZNC wiki. https://wiki.znc.in/Z
 
 This was developed and tested under Python 3.
 
-* **`Getting Started`_**
-
-.. _Getting Started: https://znc-backup.rtfd.io
+* `Getting Started <https://znc-backup.readthedocs.io/en/latest/getting-started.html>`_
 
 License
 -------
