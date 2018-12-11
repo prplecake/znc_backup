@@ -1,4 +1,4 @@
-znc-backup
+znc_backup
 ==========
 
 [![Documentation Status][docStatus-img]][docStatus-url]
