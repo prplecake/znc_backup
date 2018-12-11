@@ -1,10 +1,6 @@
 znc_backup
 ==========
 
-[![Documentation Status][docStatus-img]][docStatus-url]
-[docStatus-img]: https://readthedocs.org/projects/znc-backup/badge/?version=latest
-[docStatus-url]: https://znc-backup.readthedocs.io/en/latest/?badge=latest
-
 `znc-backup` is a script that creates a 7-zip archive of the `$HOME/.znc`
 directory and emails it to an email you provide during setup.
 
