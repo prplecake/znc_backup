@@ -15,6 +15,15 @@ from email.message import EmailMessage
 import setup
 import conf.logger_config as lc
 
+global host, port, username, password, toAddr, fromAddr
+
+host = config['smtp']['host']
+port = config['smtp']['port']
+username = config['smtp']['username']
+password = config['smtp']['password']
+toAddr = config['email']['to']
+fromAddr = config['email']['from']
+
 
 def startLogger():
     if not os.path.isdir('log'):
@@ -25,36 +34,44 @@ def startLogger():
     return logger
 
 
-def sendEmail(backupFile):
-    host = config['smtp']['host']
-    port = config['smtp']['port']
-    username = config['smtp']['username']
-    password = config['smtp']['password']
-    toAddr = config['email']['to']
-    fromAddr = config['email']['from']
-    message = """
+class Emailer(host, port, username, password, toAddr, fromAddr):
+    def __init__(self):
+        self.host = host
+        self.port = port
+        self.username = username
+        self.password = password
+        self.toAddr = toAddr
+        self.fromAddr = fromAddr
+
+    def sendSuccessEmail(backupFile):
+        message = """
 It's that time of week again.
 Here's your weekly backup of your znc data on `Chell`.
-    """
-    msg = EmailMessage()
-    msg.set_content(message)
-    msg['Subject'] = 'Weekly ZNC Backup'
-    msg['From'] = fromAddr
-    msg['To'] = toAddr
-    with open(backupFile, 'rb') as bf:
-        msg.add_attachment(
-            bf.read(), maintype="application",
-            subtype="x-7z-compressed", filename=os.path.basename(backupFile)
-            )
-    try:
-        logger.debug('Attempting to send mail...')
-        with smtplib.SMTP_SSL(host, port) as s:
-            s.login(username, password)
-            s.send_message(msg)
-        logger.debug('Mail sent.')
-    except Exception as e:
-        logger.critical('Unable to send mail. Exception: {}'.format(e))
+        """
+        msg = EmailMessage()
+        msg.set_content(message)
+        msg['Subject'] = 'Weekly ZNC Backup'
+        msg['From'] = fromAddr
+        msg['To'] = toAddr
+        with open(backupFile, 'rb') as bf:
+            msg.add_attachment(
+                bf.read(), maintype="application",
+                subtype="x-7z-compressed", filename=os.path.basename(backupFile)
+                )
+        try:
+            logger.debug('Attempting to send mail...')
+            with smtplib.SMTP_SSL(host, port) as s:
+                s.login(username, password)
+                s.send_message(msg)
+            logger.debug('Mail sent.')
+        except Exception as e:
+            logger.critical('Unable to send mail. Exception: {}'.format(e))
 
+    def sendErrorEmail(e=None):
+        message = """
+Something went very wrong sending the backup email.\n\nError is:\n```\n
+{e}\n```\n
+"""
 
 def main():
     global logger
