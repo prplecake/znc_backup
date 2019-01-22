@@ -15,16 +15,6 @@ from email.message import EmailMessage
 import setup
 import conf.logger_config as lc
 
-global host, port, username, password, toAddr, fromAddr
-
-host = config['smtp']['host']
-port = config['smtp']['port']
-username = config['smtp']['username']
-password = config['smtp']['password']
-toAddr = config['email']['to']
-fromAddr = config['email']['from']
-
-
 def startLogger():
     if not os.path.isdir('log'):
         subprocess.call(['mkdir', 'log'])
@@ -34,8 +24,9 @@ def startLogger():
     return logger
 
 
-class Emailer(host, port, username, password, toAddr, fromAddr):
-    def __init__(self):
+class Emailer:
+    def __init__(self, host=None, port=None, username=None,
+                password=None, toAddr=None, fromAddr=None):
         self.host = host
         self.port = port
         self.username = username
@@ -43,7 +34,7 @@ class Emailer(host, port, username, password, toAddr, fromAddr):
         self.toAddr = toAddr
         self.fromAddr = fromAddr
 
-    def sendSuccessEmail(backupFile):
+    def sendSuccessEmail(self, backupFile):
         message = """
 It's that time of week again.
 Here's your weekly backup of your znc data on `Chell`.
@@ -51,8 +42,8 @@ Here's your weekly backup of your znc data on `Chell`.
         msg = EmailMessage()
         msg.set_content(message)
         msg['Subject'] = 'Weekly ZNC Backup'
-        msg['From'] = fromAddr
-        msg['To'] = toAddr
+        msg['From'] = self.fromAddr
+        msg['To'] = self.toAddr
         with open(backupFile, 'rb') as bf:
             msg.add_attachment(
                 bf.read(), maintype="application",
@@ -60,14 +51,14 @@ Here's your weekly backup of your znc data on `Chell`.
                 )
         try:
             logger.debug('Attempting to send mail...')
-            with smtplib.SMTP_SSL(host, port) as s:
-                s.login(username, password)
+            with smtplib.SMTP_SSL(self.host, self.port) as s:
+                s.login(self.username, self.password)
                 s.send_message(msg)
             logger.debug('Mail sent.')
         except Exception as e:
             logger.critical('Unable to send mail. Exception: {}'.format(e))
 
-    def sendErrorEmail(e=None):
+    def sendErrorEmail(self, e=None):
         message = """
 Something went very wrong sending the backup email.\n\nError is:\n```\n
 {e}\n```\n
@@ -79,10 +70,17 @@ def main():
     global config
     if not os.path.exists('config.json'):
         logger.warning('Configuration file doesn\'t exist.')
-        config = setup.createConfig()
+        setup.createConfig()
     with open('config.json', 'r') as f:
         config = json.load(f)
     path = os.getenv("HOME") + "/.znc"
+    emailer = Emailer()
+    emailer.host = config['smtp']['host']
+    emailer.port = config['smtp']['port']
+    emailer.username = config['smtp']['username']
+    emailer.password = config['smtp']['password']
+    emailer.toAddr = config['email']['to']
+    emailer.fromAddr = config['email']['from']
     tempPath = os.getenv("HOME") + "/znc-backup-staging"
     timestamp = datetime.now().strftime("%d-%h-%y - %H-%M-%S")
     logger.debug('Checking if backup source location exists.')
@@ -111,7 +109,7 @@ def main():
         except Exception:
             logger.error('Something went wrong creating archive.')
             exit()
-        sendEmail(outFile)
+        emailer.sendSuccessEmail(outFile)
 
 
 if __name__ == '__main__':
