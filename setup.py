@@ -9,6 +9,12 @@ import json
 
 
 def createConfig(file='config.json'):
+    """Creates the required configuration and saves it to a file.
+
+    Keyword arguments:
+    file -- the name of the configuration file. 
+    """
+    
     if input("Create config now? (Y/n) ") in ['y', 'Y']:
         config = {'smtp': {}, 'email': {}}
         config['smtp']['host'] = str(input("Your SMTP Host: "))
