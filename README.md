@@ -10,7 +10,9 @@ This project was inspired by ZNC backup from the ZNC wiki. https://wiki.znc.in/Z
 
 This was developed and tested under Python 3.
 
-* [Getting Started](https://man.sr.ht/~mjorgensen/znc_backup/getting-started.md)
+* [Getting Started][0]
+
+[0]: (https://man.sr.ht/~mjorgensen/znc_backup/getting-started.md)
 
 License
 -------
