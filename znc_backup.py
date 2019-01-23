@@ -15,6 +15,7 @@ from email.message import EmailMessage
 import setup
 import conf.logger_config as lc
 
+
 def startLogger():
     if not os.path.isdir('log'):
         subprocess.call(['mkdir', 'log'])
@@ -26,7 +27,7 @@ def startLogger():
 
 class Emailer:
     def __init__(self, host=None, port=None, username=None,
-                password=None, toAddr=None, fromAddr=None):
+                 password=None, toAddr=None, fromAddr=None):
         self.host = host
         self.port = port
         self.username = username
@@ -47,22 +48,40 @@ Here's your weekly backup of your znc data on `Chell`.
         with open(backupFile, 'rb') as bf:
             msg.add_attachment(
                 bf.read(), maintype="application",
-                subtype="x-7z-compressed", filename=os.path.basename(backupFile)
-                )
+                subtype="x-7z-compressed", filename=os.path.basename(
+                    backupFile))
         try:
-            logger.debug('Attempting to send mail...')
+            logger.info('Attempting to send mail...')
             with smtplib.SMTP_SSL(self.host, self.port) as s:
                 s.login(self.username, self.password)
                 s.send_message(msg)
-            logger.debug('Mail sent.')
+            logger.info('Mail sent.')
         except Exception as e:
+            self.sendErrorEmail(e)
             logger.critical('Unable to send mail. Exception: {}'.format(e))
 
-    def sendErrorEmail(self, e=None):
+    def sendErrorEmail(self, msg=None, e=None):
         message = """
 Something went very wrong sending the backup email.\n\nError is:\n```\n
 {e}\n```\n
-"""
+{msg}
+\n
+Perhaps the logs have more information?\n
+        """
+        em = EmailMessage()
+        em.set_content(message)
+        em['Subject'] = 'ERROR: Weekly ZNC Backup'
+        em['From'] = self.fromAddr
+        em['To'] = self.toAddr
+        try:
+            logger.info('Attempting to send error notification..')
+            with smtplib.SMTP_SSL(self.host, self.port) as s:
+                s.login(self.username, self.password)
+                s.send_message(em)
+            logger.info('Error notification sent.')
+        except Exception as e:
+            logger.critical('Unable to send mail. Exception: {}'.format(e))
+
 
 def main():
     global logger
