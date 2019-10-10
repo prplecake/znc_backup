@@ -11,8 +11,6 @@ This was developed and tested under Python 3.
 
 * [Getting Started][0]
 
-[docs]: https://man.sr.ht/~mjorgensen/znc_backup
-[tracker]: https://todo.sr.ht/%7Emjorgensen/znc_backup
 [0]: https://man.sr.ht/~mjorgensen/znc_backup/getting-started.md
 
 ## Resources
@@ -27,3 +25,7 @@ Bugs, issues, and todo are found in the tracker:
 [~mjorgensen/browser_logger][tracker]
 
 This project is licensed under the terms of the MIT license.
+
+[docs]: https://man.sr.ht/~mjorgensen/znc_backup
+[tracker]: https://todo.sr.ht/~mjorgensen/znc_backup
+[list]: https://lists.sr.ht/~mjorgensen/public-inbox
