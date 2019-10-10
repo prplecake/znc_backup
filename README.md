@@ -1,8 +1,4 @@
-znc_backup
-==========
-
-* [Documentation][docs]
-* [Issue Tracker][tracker]
+# znc_backup
 
 `znc-backup` is a script that creates a 7-zip archive of the `$HOME/.znc`
 directory and emails it to an email you provide during setup.
@@ -19,7 +15,15 @@ This was developed and tested under Python 3.
 [tracker]: https://todo.sr.ht/%7Emjorgensen/znc_backup
 [0]: https://man.sr.ht/~mjorgensen/znc_backup/getting-started.md
 
-License
--------
+## Resources
+
+Documentation [lives here][docs].
+
+Discussion and patches should be sent to
+[~mjorgensen/public-inbox@lists.sr.ht][list]. Please use `--subject-prefix PATCH
+znc_backup` for clairty when sending patches.
+
+Bugs, issues, and todo are found in the tracker:
+[~mjorgensen/browser_logger][tracker]
 
 This project is licensed under the terms of the MIT license.
