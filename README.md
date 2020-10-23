@@ -22,7 +22,7 @@ Discussion and patches should be sent to
 znc_backup` for clairty when sending patches.
 
 Bugs, issues, and todo are found in the tracker:
-[~mjorgensen/browser_logger][tracker]
+[~mjorgensen/znc_backup][tracker]
 
 This project is licensed under the terms of the MIT license.
 
