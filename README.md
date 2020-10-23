@@ -5,7 +5,8 @@ directory and emails it to an email you provide during setup.
 
 ZNC is an advanced IRC bouncer. <https://wiki.znc.in/ZNC>
 
-This project was inspired by ZNC backup from the ZNC wiki. <https://wiki.znc.in/ZNC_Backup>
+This project was inspired by ZNC backup from the ZNC wiki.
+<https://wiki.znc.in/ZNC_Backup>
 
 This was developed and tested under Python 3.
 
@@ -18,8 +19,8 @@ This was developed and tested under Python 3.
 Documentation [lives here][docs].
 
 Discussion and patches should be sent to
-[~mjorgensen/public-inbox@lists.sr.ht][list]. Please use `--subject-prefix PATCH
-znc_backup` for clairty when sending patches.
+[~mjorgensen/public-inbox@lists.sr.ht][list]. Please use
+`--subject-prefix PATCH znc_backup` for clairty when sending patches.
 
 Bugs, issues, and todo are found in the tracker:
 [~mjorgensen/znc_backup][tracker]
