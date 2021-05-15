@@ -60,10 +60,10 @@ Here's your weekly backup of your znc data on `Chell`.
             self.sendErrorEmail(e)
             logger.critical('Unable to send mail. Exception: {}'.format(e))
 
-    def sendErrorEmail(self, msg=None, e=None):
+    def sendErrorEmail(self, msg=None, err=None):
         message = """
 Something went very wrong sending the backup email.\n\nError is:\n```\n
-{e}\n```\n
+{err}\n```\n
 {msg}
 \n
 Perhaps the logs have more information?\n
