@@ -16,11 +16,11 @@ import setup
 import conf.logger_config as lc
 
 
-def startLogger():
+def start_logger():
     if not os.path.isdir('log'):
         subprocess.call(['mkdir', 'log'])
-    logging.config.dictConfig(lc.LOGGER_CONFIG)
-    logger = logging.getLogger(__name__)
+    logging.config.dict_config(lc.LOGGER_CONFIG)
+    logger = logging.get_logger(__name__)
     logger.debug('Logger initialized.')
     return logger
 
@@ -35,7 +35,7 @@ class Emailer:
         self.toAddr = toAddr
         self.fromAddr = fromAddr
 
-    def sendSuccessEmail(self, backupFile):
+    def send_success_email(self, backupFile):
         message = """
 It's that time of week again.
 Here's your weekly backup of your znc data on `Chell`.
@@ -57,10 +57,10 @@ Here's your weekly backup of your znc data on `Chell`.
                 s.send_message(msg)
             logger.info('Mail sent.')
         except Exception as e:
-            self.sendErrorEmail(e)
+            self.send_error_email(e)
             logger.critical('Unable to send mail. Exception: {}'.format(e))
 
-    def sendErrorEmail(self, msg=None, err=None):
+    def send_error_email(self, msg=None, err=None):
         message = """
 Something went very wrong sending the backup email.\n\nError is:\n```\n
 {err}\n```\n
@@ -85,11 +85,11 @@ Perhaps the logs have more information?\n
 
 def main():
     global logger
-    logger = startLogger()
+    logger = start_logger()
     global config
     if not os.path.exists('config.json'):
         logger.warning('Configuration file doesn\'t exist.')
-        setup.createConfig()
+        setup.create_config()
     with open('config.json', 'r') as f:
         config = json.load(f)
     path = os.getenv("HOME") + "/.znc"
@@ -128,7 +128,7 @@ def main():
         except Exception:
             logger.error('Something went wrong creating archive.')
             exit()
-        emailer.sendSuccessEmail(outFile)
+        emailer.send_success_email(outFile)
 
 
 if __name__ == '__main__':
