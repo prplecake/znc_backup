@@ -8,7 +8,7 @@ import os
 import json
 
 
-def createConfig(file):
+def create_config(file):
     """Creates the required configuration and saves it to a file.
 
     Keyword arguments:
@@ -47,9 +47,9 @@ The configuration file already exists. Would you like to overwrite it? (Y/n)
             print("Exiting.")
             exit()
         else:
-            createConfig(CONFIG_FILE)
+            create_config(CONFIG_FILE)
     else:
-        createConfig(CONFIG_FILE)
+        create_config(CONFIG_FILE)
 
 
 if __name__ == '__main__':
