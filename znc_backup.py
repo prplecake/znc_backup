@@ -27,15 +27,15 @@ def start_logger():
 
 class Emailer:
     def __init__(self, host=None, port=None, username=None,
-                 password=None, toAddr=None, fromAddr=None):
+                 password=None, to_addr=None, from_addr=None):
         self.host = host
         self.port = port
         self.username = username
         self.password = password
-        self.toAddr = toAddr
-        self.fromAddr = fromAddr
+        self.toAddr = to_addr
+        self.fromAddr = from_addr
 
-    def send_success_email(self, backupFile):
+    def send_success_email(self, backup_file):
         message = """
 It's that time of week again.
 Here's your weekly backup of your znc data on `Chell`.
@@ -45,11 +45,11 @@ Here's your weekly backup of your znc data on `Chell`.
         msg['Subject'] = 'Weekly ZNC Backup'
         msg['From'] = self.fromAddr
         msg['To'] = self.toAddr
-        with open(backupFile, 'rb') as bf:
+        with open(backup_file, 'rb') as bf:
             msg.add_attachment(
                 bf.read(), maintype="application",
                 subtype="x-7z-compressed", filename=os.path.basename(
-                    backupFile))
+                    backup_file))
         try:
             logger.info('Attempting to send mail...')
             with smtplib.SMTP_SSL(self.host, self.port) as s:
@@ -100,13 +100,13 @@ def main():
     emailer.password = config['smtp']['password']
     emailer.toAddr = config['email']['to']
     emailer.fromAddr = config['email']['from']
-    tempPath = os.getenv("HOME") + "/znc-backup-staging"
+    temp_path = os.getenv("HOME") + "/znc-backup-staging"
     timestamp = datetime.now().strftime("%d-%h-%y - %H-%M-%S")
     logger.debug('Checking if backup source location exists.')
-    if not os.path.isdir(tempPath):
+    if not os.path.isdir(temp_path):
         logger.warning('Backup dir doesn\'t exist. Creating...')
         try:
-            subprocess.call(['mkdir', '-p', tempPath])
+            subprocess.call(['mkdir', '-p', temp_path])
             logger.debug('Backup dir created.')
             # createdBackupDir = True
         except Exception:
@@ -116,19 +116,19 @@ def main():
         logger.debug('Backup dir exists - skipping')
         # createdBackupDir = False
     filename = "znc - " + timestamp
-    outFile = tempPath + "/" + filename + ".7z"
-    logger.info(outFile)
+    out_file = temp_path + "/" + filename + ".7z"
+    logger.info(out_file)
     if not os.path.isdir(path):
         logger.error('Uh oh... check to make sure the path is right.')
         logger.error('`path`: {}'.format(path))
     else:
-        cmd = ["7z", "a", outFile, path]
+        cmd = ["7z", "a", out_file, path]
         try:
             subprocess.call(cmd)
         except Exception:
             logger.error('Something went wrong creating archive.')
             exit()
-        emailer.send_success_email(outFile)
+        emailer.send_success_email(out_file)
 
 
 if __name__ == '__main__':
