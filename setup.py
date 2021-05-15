@@ -8,13 +8,13 @@ import os
 import json
 
 
-def createConfig(file='config.json'):
+def createConfig(file):
     """Creates the required configuration and saves it to a file.
 
     Keyword arguments:
-    file -- the name of the configuration file. 
+    file -- the name of the configuration file.
     """
-    
+
     if input("Create config now? (Y/n) ") in ['y', 'Y']:
         config = {'smtp': {}, 'email': {}}
         config['smtp']['host'] = str(input("Your SMTP Host: "))
@@ -23,7 +23,7 @@ def createConfig(file='config.json'):
         config['smtp']['password'] = str(input("SMTP password: "))
         config['email']['from'] = str(input("Sender's email address: "))
         config['email']['to'] = str(input("Recipient's email address: "))
-        with open('config.json', 'w') as cf:
+        with open(file, 'w') as cf:
             json.dump(config, cf, indent=4)
     else:
         print("You chose not to create config now.")
@@ -31,22 +31,25 @@ def createConfig(file='config.json'):
 
 
 def main():
+    global CONFIG_FILE
+    CONFIG_FILE = 'config.json'
+
     print("""
 Welcome to the znc-backup script. Very simply, this script creates a 7zip
 archive of $HOME/.znc and emails you the archive. This script simply creates
 the configuration file.
     """)
 
-    if os.path.exists('config.json'):
+    if os.path.exists(CONFIG_FILE):
         if input("""
 The configuration file already exists. Would you like to overwrite it? (Y/n)
 """) not in ['y', 'Y']:
             print("Exiting.")
             exit()
         else:
-            createConfig()
+            createConfig(CONFIG_FILE)
     else:
-        createConfig()
+        createConfig(CONFIG_FILE)
 
 
 if __name__ == '__main__':
