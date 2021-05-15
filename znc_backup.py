@@ -108,13 +108,11 @@ def main():
         try:
             subprocess.call(['mkdir', '-p', temp_path])
             logger.debug('Backup dir created.')
-            # createdBackupDir = True
         except Exception:
             logger.error('Something went wrong creating backup dir.')
             exit()
     else:
         logger.debug('Backup dir exists - skipping')
-        # createdBackupDir = False
     filename = "znc - " + timestamp
     out_file = temp_path + "/" + filename + ".7z"
     logger.info(out_file)
