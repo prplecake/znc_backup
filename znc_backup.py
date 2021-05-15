@@ -32,8 +32,8 @@ class Emailer:
         self.port = port
         self.username = username
         self.password = password
-        self.toAddr = to_addr
-        self.fromAddr = from_addr
+        self.to_addr = to_addr
+        self.from_addr = from_addr
 
     def send_success_email(self, backup_file):
         message = """
@@ -71,8 +71,8 @@ Perhaps the logs have more information?\n
         em = EmailMessage()
         em.set_content(message)
         em['Subject'] = 'ERROR: Weekly ZNC Backup'
-        em['From'] = self.fromAddr
-        em['To'] = self.toAddr
+        em['From'] = self.from_addr
+        em['To'] = self.to_addr
         try:
             logger.info('Attempting to send error notification..')
             with smtplib.SMTP_SSL(self.host, self.port) as s:
@@ -98,8 +98,8 @@ def main():
     emailer.port = config['smtp']['port']
     emailer.username = config['smtp']['username']
     emailer.password = config['smtp']['password']
-    emailer.toAddr = config['email']['to']
-    emailer.fromAddr = config['email']['from']
+    emailer.to_addr = config['email']['to']
+    emailer.from_addr = config['email']['from']
     temp_path = os.getenv("HOME") + "/znc-backup-staging"
     timestamp = datetime.now().strftime("%d-%h-%y - %H-%M-%S")
     logger.debug('Checking if backup source location exists.')
