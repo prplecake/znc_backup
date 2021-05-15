@@ -84,13 +84,15 @@ Perhaps the logs have more information?\n
 
 
 def main():
+    global CONFIG_FILE
+    CONFIG_FILE = 'config.json'
     global logger
     logger = start_logger()
     global config
-    if not os.path.exists('config.json'):
+    if not os.path.exists(CONFIG_FILE):
         logger.warning('Configuration file doesn\'t exist.')
-        setup.create_config()
-    with open('config.json', 'r') as f:
+        setup.create_config(CONFIG_FILE)
+    with open(CONFIG_FILE, 'r') as f:
         config = json.load(f)
     path = os.getenv("HOME") + "/.znc"
     emailer = Emailer()
